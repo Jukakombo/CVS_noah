@@ -1,7 +1,6 @@
 import { useState } from "react";
 import logo from "../assets/Uoj-logo.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 function Navigation() {
