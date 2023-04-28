@@ -4,12 +4,15 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 function Navigation() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const onAndOff = () => {
     setIsOpen((isOpen) => !isOpen);
   };
 
+  const close = () => {
+    setIsOpen(false);
+  };
   const navigation = [
     {
       _id: "kjdjd",
