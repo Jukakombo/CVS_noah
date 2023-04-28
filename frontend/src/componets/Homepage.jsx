@@ -17,7 +17,7 @@ function Homepage() {
                 Check Certificate
               </button>
             </Link>
-            <Link to={"/Admin"}>
+            <Link to={"/Login"}>
               <button className="btnPrimary text-white ">Admin Login</button>
             </Link>
           </div>

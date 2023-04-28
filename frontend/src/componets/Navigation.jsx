@@ -32,7 +32,7 @@ function Navigation() {
     },
     {
       _id: "ksazzed3s4jdjd",
-      name: "Admin",
+      name: "Login",
     },
   ];
   return (
