@@ -29,7 +29,7 @@ function Check() {
           <form onSubmit={handleSubmit} className="md:flex items-center">
             <input
               type="text"
-              placeholder="Search by ID or Last Name "
+              placeholder="Search by ID Number  "
               className="form__input  w-full p-4 outline-none"
             />
             <button
