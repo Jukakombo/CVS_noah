@@ -2,6 +2,7 @@ import React from "react";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import { AiOutlineSearch } from "react-icons/ai";
+import Certifcate from "./Certifcate";
 function Check() {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,6 +40,13 @@ function Check() {
               Search
             </button>
           </form>
+          <Certifcate />
+          <Certifcate />
+          <Certifcate />
+          <Certifcate />
+          <Certifcate />
+          <Certifcate />
+          <Certifcate />
         </div>
       </div>
       <Footer />

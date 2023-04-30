@@ -1,13 +1,24 @@
 import React from "react";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { signin } from "../actions/user";
+
+const initialState = {
+  email: "",
+  password: "",
+};
 
 function Login() {
+  const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    //
+    dispatch(signin(formData, navigate));
   };
 
   return (
@@ -19,7 +30,15 @@ function Login() {
             <div className="flex flex-col">
               <input
                 type="email"
-                name=""
+                name="email"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    email: e.target.value,
+                  })
+                }
+                required
                 placeholder="Enter your Email ..."
                 className=" w-full my-4 p-2 outline-none"
               />
@@ -28,11 +47,21 @@ function Login() {
               <input
                 type="password"
                 className=" w-full my-4 p-2 outline-none"
-                name=""
+                name="password"
                 placeholder="Enter your Password ...   "
+                value={formData.password}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    password: e.target.value,
+                  })
+                }
+                required
               />
             </div>
-            <button className="btnPrimary w-full my-4 text-white">Login</button>
+            <button type="submit" className="btnPrimary w-full my-4 text-white">
+              Login
+            </button>
             <div>
               Don't have an account?{" "}
               <Link to="/register">

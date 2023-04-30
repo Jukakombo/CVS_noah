@@ -1,20 +1,20 @@
 import * as api from "../api/auth";
 
-export const signin = (formData, history) => async (dispatch) => {
+export const signin = (formData, navigate) => async (dispatch) => {
   try {
-    const { data } = await api.signIn(formData, history);
+    const { data } = await api.signIn(formData, navigate);
     dispatch({ type: "AUTH", data });
-    history.push("/dashboard");
+    navigate("/admin");
   } catch (error) {
     console.log(error);
   }
 };
 
-export const signup = (formData, history) => async (dispatch) => {
+export const signup = (formData, navigate) => async (dispatch) => {
   try {
-    const { data } = await api.signUp(formData, history);
+    const { data } = await api.signUp(formData, navigate);
     dispatch({ type: "AUTH", data });
-    history.push("/dashboard");
+    navigate("/admin");
   } catch (error) {
     console.log(error);
   }
