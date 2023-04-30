@@ -46,7 +46,7 @@ function Navigation() {
           />
           <div className="text-center font-bold text-white logo__text">
             <p>University of Juba</p>
-            <p>Certificate Management System</p>
+            <p>Certificate Verification System</p>
           </div>
         </div>
         <div className="humberger__menu hidden " onClick={onAndOff}>

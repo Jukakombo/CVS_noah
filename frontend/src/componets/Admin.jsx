@@ -54,8 +54,8 @@ function Admin() {
           </div>
           <div className="main_bar px-4 bg-white flex-[70%]">
             <CreateCertificate />
-            {/* <Certificates /> */}
-            {/* <DeleteCertificate /> */}
+            <Certificates />
+            <DeleteCertificate />
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ function Check() {
             Intructions
           </h1>
           <p className="text-xl">
-            1. Enter the last name or ID No. in the search field.
+            1. Enter the your ID No. in the search field.
           </p>
           <p className="text-xl">
             2. Click the "Search" button to initiate the search.
