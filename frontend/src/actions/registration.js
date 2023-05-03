@@ -18,11 +18,11 @@ export const getRegistrations = () => async (dispatch) => {
 };
 //   create CONTACTion function
 export const createRegistration = (registrationData) => async (dispatch) => {
-  const { history } = registrationData;
+  // const { navigate } = registrationData;
   try {
     const { data } = await axios.creatRregistration(registrationData);
     dispatch({ type: CREATE_REGISTRATION, payload: data });
-    history.push("/summary");
+    // navigate("/");
   } catch (error) {
     console.log(error);
   }

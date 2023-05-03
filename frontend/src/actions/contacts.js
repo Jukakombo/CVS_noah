@@ -28,9 +28,9 @@ export const createContact = (contact) => async (dispatch) => {
 };
 
 // update CONTACT function
-export const updateContact = (updatedContact, id) => async (dispatch) => {
+export const updateContact = (contact, id) => async (dispatch) => {
   try {
-    const { data } = await axios.updateContact(updatedContact, id);
+    const { data } = await axios.updateContact(contact, id);
     dispatch({ type: UPDATE_CONTACT, payload: data });
   } catch (error) {
     console.log(error);

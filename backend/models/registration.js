@@ -1,17 +1,16 @@
 import mongoose from "mongoose";
 const registrationSchema = mongoose.Schema(
   {
-    // user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     firstName: String,
     lastName: String,
-    email: String,
-    gradeObtain: String,
     dateOfBirth: String,
+    contact: String,
+    gradeObtain: String,
     sex: String,
     courseCompleted: String,
-    StartingYear: String,
+    startedYear: String,
     completeYear: String,
-    profComment: String,
+    profilePhoto: String,
   },
   { timestamps: true }
 );

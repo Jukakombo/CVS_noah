@@ -22,7 +22,7 @@ function Login() {
   };
 
   return (
-    <div className="bg-[#FCF7F7]  ">
+    <div className="bg-[#FCF7F7] h-full ">
       <Navigation />
       <div className="flex items-center justify-center py-16 px-4">
         <form onSubmit={handleSubmit}>

@@ -1,8 +1,48 @@
 import React from "react";
 import img from "../assets/addAvatar.png";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createContact, updateContact } from "../actions/contacts";
+import FileBase from "react-file-base64";
+import UpdateCertificate from "./UpdateCertificate";
+import { useEffect } from "react";
 function CreateCertificate() {
+  const certyificates = useSelector((state) => state.contacts);
+  const [currentId, setCurrentId] = useState(null);
+  const update = useSelector((state) =>
+    currentId ? state.contacts.find((p) => p._id === currentId) : null
+  );
+
+  const dispatch = useDispatch();
+  const [contact, setContact] = useState({
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    contact: "",
+    gradeObtain: "",
+    sex: "",
+    courseCompleted: "",
+    startedYear: "",
+    completeYear: "",
+    profilePhoto: "",
+  });
+  useEffect(() => {
+    if (update) setContact(update);
+  }, [update]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // if (currentId) {
+    //   dispatch(updateContact(currentId, contact));
+    // } else {
+    //   dispatch(createContact(contact));
+    // }
+    if (currentId === 0) {
+      dispatch(createContact(contact));
+    } else {
+      dispatch(updateContact(currentId, contact));
+    }
   };
   return (
     <div>
@@ -24,19 +64,35 @@ function CreateCertificate() {
                   type="text"
                   placeholder="First Name"
                   name="firstName"
+                  value={contact.firstName}
+                  onChange={(e) =>
+                    setContact({
+                      ...contact,
+                      firstName: e.target.value,
+                    })
+                  }
+                  required
                 />
               </div>
               <div className="flex flex-col my-2 mx-2">
                 {" "}
-                <label htmlFor="contact" className="text-gray-500 text-xl">
+                <label htmlFor="lastName" className="text-gray-500 text-xl">
                   Last Name
                 </label>
                 <input
                   className="outline-none p-2 bg-gray-200 rounded"
-                  id="contact"
+                  id="lastName"
                   type="text"
                   placeholder="Last Name "
-                  name="contact"
+                  name="lastName"
+                  value={contact.lastName}
+                  onChange={(e) =>
+                    setContact({
+                      ...contact,
+                      lastName: e.target.value,
+                    })
+                  }
+                  required
                 />
               </div>
               <div className="flex flex-col my-2 mx-2">
@@ -48,21 +104,37 @@ function CreateCertificate() {
                   className="outline-none p-2 bg-gray-200 rounded"
                   id="dateOfBirth"
                   type="date"
-                  placeholder="Last Name "
-                  name="DateOfBirth"
+                  placeholder="Date of Birthday"
+                  name="dateOfBirth"
+                  value={contact.dateOfBirth}
+                  onChange={(e) =>
+                    setContact({
+                      ...contact,
+                      dateOfBirth: e.target.value,
+                    })
+                  }
+                  required
                 />
               </div>
               <div className="flex flex-col my-2 mx-2">
                 {" "}
-                <label htmlFor="lastName" className="text-gray-500 text-xl">
+                <label htmlFor="contact" className="text-gray-500 text-xl">
                   Contact
                 </label>
                 <input
                   className="outline-none p-2 bg-gray-200 rounded"
-                  id="lastName"
+                  id="contact"
                   type="text"
                   placeholder="Contact "
-                  name="lastName"
+                  name="contact"
+                  value={contact.contact}
+                  onChange={(e) =>
+                    setContact({
+                      ...contact,
+                      contact: e.target.value,
+                    })
+                  }
+                  required
                 />
               </div>
               <div className="flex flex-col my-2 mx-2">
@@ -74,8 +146,16 @@ function CreateCertificate() {
                   className="outline-none p-2 bg-gray-200 rounded"
                   id="sex"
                   type="text"
-                  placeholder="Contact "
-                  name="lastName"
+                  placeholder="sex "
+                  name="sex"
+                  value={contact.sex}
+                  onChange={(e) =>
+                    setContact({
+                      ...contact,
+                      sex: e.target.value,
+                    })
+                  }
+                  required
                 >
                   <option value="">Select...</option>
                   <option value="Male"> Male</option>
@@ -95,8 +175,16 @@ function CreateCertificate() {
                   className="outline-none p-2 bg-gray-200 rounded"
                   id="courseCompleted"
                   type="text"
-                  placeholder="Contact "
+                  placeholder="Course Completed "
                   name="courseCompleted"
+                  value={contact.courseCompleted}
+                  onChange={(e) =>
+                    setContact({
+                      ...contact,
+                      courseCompleted: e.target.value,
+                    })
+                  }
+                  required
                 >
                   <option value="">Select ...</option>
                   <option value="Computer Science">Computer Science </option>
@@ -124,9 +212,17 @@ function CreateCertificate() {
                 <input
                   className="outline-none p-2 bg-gray-200 rounded"
                   id="gradeObtain"
-                  type="number"
+                  type="gradeObtain"
                   placeholder="Grade Obtain "
                   name="gradeObtain"
+                  value={contact.gradeObtain}
+                  onChange={(e) =>
+                    setContact({
+                      ...contact,
+                      gradeObtain: e.target.value,
+                    })
+                  }
+                  required
                 />
               </div>
               <div className="flex flex-col my-2 mx-2">
@@ -140,6 +236,14 @@ function CreateCertificate() {
                   type="date"
                   placeholder="Year Started "
                   name="startedYear"
+                  value={contact.startedYear}
+                  onChange={(e) =>
+                    setContact({
+                      ...contact,
+                      startedYear: e.target.value,
+                    })
+                  }
+                  required
                 />
               </div>
               <div className="flex flex-col my-2 mx-2">
@@ -155,7 +259,15 @@ function CreateCertificate() {
                   id="completedYear"
                   type="text"
                   placeholder="Completed year "
-                  name="completedYear"
+                  name="completeYear"
+                  value={contact.completeYear}
+                  onChange={(e) =>
+                    setContact({
+                      ...contact,
+                      completeYear: e.target.value,
+                    })
+                  }
+                  required
                 />
               </div>{" "}
               <div className="flex flex-col my-2 mx-2">
@@ -166,19 +278,25 @@ function CreateCertificate() {
                 <label htmlFor="photo" className="bg-gray-200 p-2 rounded">
                   <img className="w-[23px]" src={img} alt="image" />
                 </label>
-                <input
-                  className="outline-none hidden "
+                <FileBase
+                  style={{ display: "none" }}
                   id="photo"
                   type="file"
-                  placeholder=""
-                  name="profilePhoto"
+                  multiple={false}
+                  onDone={({ base64 }) =>
+                    setContact({ ...contact, profilePhoto: base64 })
+                  }
                 />
               </div>
             </div>
             <button className="btnPrimary text-white font-bold my-8   text-center w-[50%] m-auto ">
-              Create
+              {currentId ? "Update Certificate" : " Certificate"}
             </button>
           </form>
+          <UpdateCertificate
+            setCurrentId={setCurrentId}
+            certyificates={certyificates}
+          />
         </div>
       </div>
     </div>

@@ -9,7 +9,14 @@ import Admin from "./componets/Admin";
 import { useState } from "react";
 import CreateCertificate from "./componets/CreateCertificate";
 import ViewCertificate from "./componets/ViewCertificate";
+import { getContacts } from "./actions/contacts";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getContacts());
+  }, [dispatch]);
   const [user, setUser] = useState(true);
 
   const ProtectedRoute = ({ children }) => {
@@ -35,7 +42,6 @@ function App() {
 
           <Route
             path="/admin"
-            exact
             element={
               <ProtectedRoute>
                 <Admin />

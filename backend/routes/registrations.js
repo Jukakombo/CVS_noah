@@ -9,6 +9,6 @@ import {
 const RegistrationsRouter = express.Router();
 RegistrationsRouter.get("/", fetchRegistrations);
 RegistrationsRouter.post("/", createRegistration);
-RegistrationsRouter.patch("/:id", updateRegistration);
+RegistrationsRouter.put("/:id", updateRegistration);
 RegistrationsRouter.delete("/:id", deleteRegistration);
 export default RegistrationsRouter;

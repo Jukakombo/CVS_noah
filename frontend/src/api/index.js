@@ -1,20 +1,21 @@
 // https://certificate-management-system.onrender.com/
 import axios from "axios";
-const API = axios.create({ baseURL: "https://y2y.onrender.com" });
-
+const API = axios.create({ baseURL: "http://localhost:5000" });
+// https://y2y.onrender.com
 // process.env.REACT_APP_CLIENT_DATABASE
+
 // contacts api call endpoints
 export const fetchContacts = () => API.get("/contacts");
 export const createContact = (contact) => API.post("/contacts", contact);
 export const updateContact = (updatedContact, id) =>
-  API.put(`/contacts/${id}`, updatedContact);
+  API.patch(`/contacts/${id}`, updatedContact);
 export const deleteContact = (id) => API.delete(`/contacts/${id}`);
 
 // news api call endpoints
 export const fetchNews = () => API.get("/news");
 export const createNews = (news) => API.post("/news", news);
 export const updateNews = (newsupdatedNews, id) =>
-  API.put(`/news/${id}`, newsupdatedNews);
+  API.patch(`/news/${id}`, newsupdatedNews);
 export const deleteNews = (id) => API.delete(`/news/${id}`);
 
 // comments api call endpoints

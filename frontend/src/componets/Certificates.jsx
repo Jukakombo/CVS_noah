@@ -21,11 +21,6 @@ function Certificates() {
           </div>
         </form>
         <Certifcate />
-        <Certifcate />
-        <Certifcate />
-        <Certifcate />
-        <Certifcate />
-        <Certifcate />
       </div>
     </div>
   );
