@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
 function UpdateCertificate(props) {
   const { setCurrentId, certyificates } = props;
   //   const dispatch = useDispatch();
+  const [query, setQuery] = useState("");
   return (
     <div>
       <div className=" w-full py-4 bg-pink-100 my-4 p-4 rounded ">

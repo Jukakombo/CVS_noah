@@ -12,12 +12,15 @@ import ViewCertificate from "./componets/ViewCertificate";
 import { getContacts } from "./actions/contacts";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import DeleteCertificate from "./componets/DeleteCertificate";
+import Certificates from "./componets/Certificates";
+import SearchById from "./componets/SearchByID";
 function App() {
   const dispatch = useDispatch();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   useEffect(() => {
     dispatch(getContacts());
   }, [dispatch]);
-  const [user, setUser] = useState(true);
 
   const ProtectedRoute = ({ children }) => {
     if (!user) {
@@ -38,16 +41,21 @@ function App() {
           <Route path="/About Us" exact element={<AboutUs />} />
           <Route path="/Login" exact element={<Login />} />
           <Route path="/register" exact element={<Register />} />
-          <Route path="/view-certificate" exact element={<ViewCertificate />} />
+          <Route
+            path="/view-certificate/:id"
+            exact
+            element={<ViewCertificate />}
+          />
+          <Route path="/serach-by-id" exact element={<SearchById />} />
 
           <Route
             path="/admin"
-            element={
-              <ProtectedRoute>
-                <Admin />
-              </ProtectedRoute>
-            }
-          ></Route>
+            element={<Admin setUser={setUser} user={user} />}
+          >
+            <Route path="create-certificate" element={<CreateCertificate />} />
+            <Route path="delete-certificate" element={<DeleteCertificate />} />
+            <Route path="certificates" element={<Certificates />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

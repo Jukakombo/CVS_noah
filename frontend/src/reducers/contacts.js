@@ -17,6 +17,7 @@ const contacts = (contacts = [], action) => {
       return contacts.map((contact) =>
         contact._id === action.payload._id ? action.payload : contact
       );
+
     case DELETE_CONTACT:
       return contacts.filter((contact) => contact._id !== action.payload);
     default:

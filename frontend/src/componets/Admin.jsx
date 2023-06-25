@@ -1,26 +1,50 @@
 import React from "react";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
-import CreateCertificate from "./CreateCertificate";
-import Certificates from "./Certificates";
-import DeleteCertificate from "./DeleteCertificate";
-function Admin() {
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+function Admin({ setUser, user }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const logout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+    setUser(null);
+  };
+  useEffect(() => {
+    const token = user?.token;
+    // jwt for manual
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, [location]);
+
   return (
     <>
-      <Navigation />
-      <div className="bg-[#EB9FF8]">
+      {/* <Navigation /> */}
+      <div className="bg-[#EB9FF8] py-24 ">
+        <div className="flex justify-between w-11/12 m-auto items-between text-white">
+          <h1 className="font-bold text-2xl">
+            Hi <span className="text-[#D05EE2]">{user?.result?.name}</span>,
+            Welcome to Certificate Management system
+          </h1>
+          <button
+            onClick={() => dispatch(logout)}
+            className="bg-[#D05EE2] p-2 text-white rounded"
+          >
+            Logout
+          </button>
+        </div>
         <div className="flex   w-11/12 m-auto py-8 ">
           <div className="sidebar bg-[#EB9FF8] border-2 border-white flex-[30%] p-4">
             {/* certificates */}
-            <Link to="/certificates">
+            <Link to="certificates">
               <div className="p-2 bg-[#D05EE2] m-4 text-white rounded cursor-pointer">
                 Students Certificates
               </div>
             </Link>
 
             {/* create certificate */}
-            <Link to="/create-certificate">
+            <Link to="create-certificate">
               <div className="functions">
                 <div className="p-2 bg-[#D05EE2] m-4 text-white rounded cursor-pointer">
                   Create Certificate
@@ -28,15 +52,15 @@ function Admin() {
               </div>
             </Link>
             {/* edit certifcate */}
-            <Link to="/edit-certificate">
+            {/* <Link to="/edit-certificate">
               <div className="functions">
                 <div className="p-2 bg-[#D05EE2] m-4 text-white rounded cursor-pointer">
                   Edit Certificate
                 </div>
               </div>
-            </Link>
+            </Link> */}
             {/* delete certificate */}
-            <Link to="/delete-certificate">
+            <Link to="delete-certificate">
               <div className="functions">
                 <div className="p-2 bg-red-700  m-4 text-white rounded cursor-pointer">
                   Delete Certificate
@@ -44,22 +68,21 @@ function Admin() {
               </div>
             </Link>
             {/*logout  */}
-            <Link to="/logout">
+            <button onClick={() => dispatch(logout)}>
               <div className="functions">
                 <div className="p-2 bg-[#D05EE2] m-4 text-white rounded cursor-pointer">
                   Logout
                 </div>
               </div>
-            </Link>
+            </button>
           </div>
+
           <div className="main_bar px-4 bg-white flex-[70%]">
-            <CreateCertificate />
-            <Certificates />
-            <DeleteCertificate />
+            <Outlet />
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

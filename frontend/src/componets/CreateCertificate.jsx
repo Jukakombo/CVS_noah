@@ -6,9 +6,10 @@ import { createContact, updateContact } from "../actions/contacts";
 import FileBase from "react-file-base64";
 import UpdateCertificate from "./UpdateCertificate";
 import { useEffect } from "react";
+
 function CreateCertificate() {
   const certyificates = useSelector((state) => state.contacts);
-  const [currentId, setCurrentId] = useState(null);
+  const [currentId, setCurrentId] = useState(0);
   const update = useSelector((state) =>
     currentId ? state.contacts.find((p) => p._id === currentId) : null
   );
@@ -33,16 +34,28 @@ function CreateCertificate() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (currentId) {
-    //   dispatch(updateContact(currentId, contact));
-    // } else {
-    //   dispatch(createContact(contact));
-    // }
     if (currentId === 0) {
       dispatch(createContact(contact));
+      clear();
     } else {
       dispatch(updateContact(currentId, contact));
+      clear();
     }
+  };
+  const clear = () => {
+    setContact({
+      firstName: "",
+      lastName: "",
+      dateOfBirth: "",
+      contact: "",
+      gradeObtain: "",
+      sex: "",
+      courseCompleted: "",
+      startedYear: "",
+      completeYear: "",
+      profilePhoto: "",
+    });
+    setCurrentId(0);
   };
   return (
     <div>

@@ -23,22 +23,6 @@ export const createContact = async (req, res) => {
   }
 };
 
-// function update the contacts
-// export const updateContact = async (req, res) => {
-//   const { id } = req.params;
-//   const updateContact = req.body;
-//   if (!mongoose.Types.ObjectId.isValid(id))
-//     return res.status(404).send(`No contact found with such id:${id}`);
-//   try {
-//     const updatedContact = await Contacts.findByIdAndUpdate(id, updateContact, {
-//       new: true,
-//     });
-//     res.status(201).json(updatedContact);
-//   } catch (error) {
-//     res.status(204).json({ message: error.message });
-//   }
-// };
-
 export const updateContact = async (req, res) => {
   const { id } = req.params;
   const {
@@ -55,7 +39,7 @@ export const updateContact = async (req, res) => {
   } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`No post with id: ${id}`);
+    return res.status(404).send(`No certificate with id: ${id}`);
 
   const updatedContact = {
     firstName,

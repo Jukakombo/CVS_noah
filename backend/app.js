@@ -25,7 +25,9 @@ app.use("/registration", registrationsRouter);
 app.use("/ngodatas", ngoRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hello Mr Ally");
+  res.send(
+    "Hello, welcome to the Juba University Certificate Management System"
+  );
 });
 const PORT = process.env.PORT || 5000;
 mongoose
