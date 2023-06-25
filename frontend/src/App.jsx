@@ -1,4 +1,3 @@
-import Check from "./componets/Check";
 import Home from "./componets/Home";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Howitworks from "./componets/Howitworks";
@@ -15,7 +14,9 @@ import { useEffect } from "react";
 import DeleteCertificate from "./componets/DeleteCertificate";
 import Certificates from "./componets/Certificates";
 import SearchById from "./componets/SearchByID";
+import Loader from "./componets/Loader";
 function App() {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   useEffect(() => {
@@ -30,34 +31,50 @@ function App() {
     return children;
   };
 
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
+  // Loader
   return (
     <div className="">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Check" exact element={<Check />} />
-          <Route path="/How It Works" exact element={<Howitworks />} />
-          <Route path="/About Us" exact element={<AboutUs />} />
-          <Route path="/Login" exact element={<Login />} />
-          <Route path="/register" exact element={<Register />} />
-          <Route
-            path="/view-certificate/:id"
-            exact
-            element={<ViewCertificate />}
-          />
-          <Route path="/serach-by-id" exact element={<SearchById />} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Home" element={<Home />} />
+            <Route path="/Check" exact element={<SearchById />} />
+            <Route path="/How It Works" exact element={<Howitworks />} />
+            <Route path="/About Us" exact element={<AboutUs />} />
+            <Route path="/Login" exact element={<Login />} />
+            <Route path="/register" exact element={<Register />} />
+            <Route
+              path="/view-certificate/:id"
+              exact
+              element={<ViewCertificate />}
+            />
 
-          <Route
-            path="/admin"
-            element={<Admin setUser={setUser} user={user} />}
-          >
-            <Route path="create-certificate" element={<CreateCertificate />} />
-            <Route path="delete-certificate" element={<DeleteCertificate />} />
-            <Route path="certificates" element={<Certificates />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            <Route
+              path="/admin"
+              element={<Admin setUser={setUser} user={user} />}
+            >
+              <Route
+                path="create-certificate"
+                element={<CreateCertificate />}
+              />
+              <Route
+                path="delete-certificate"
+                element={<DeleteCertificate />}
+              />
+              <Route path="certificates" element={<Certificates />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      )}
     </div>
   );
 }

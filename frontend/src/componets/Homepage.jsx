@@ -3,7 +3,7 @@ import home1 from "../assets/x.jpg";
 import { Link } from "react-router-dom";
 function Homepage() {
   return (
-    <div className="w-11/12 m-auto py-8">
+    <div className="w-11/12 m-auto py-8 h-[100vh]">
       <div className="grid sm:grid-cols-1 md:grid-cols-2">
         <div className="">
           <h1 className="tex-3xl homepage__font">
@@ -23,7 +23,7 @@ function Homepage() {
           </div>
         </div>
         <div className="">
-          <img src={home1} alt="" />
+          <img className="rounded" src={home1} alt="" />
         </div>
       </div>
     </div>

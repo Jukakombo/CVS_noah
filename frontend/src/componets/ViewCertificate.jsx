@@ -60,13 +60,17 @@ function ViewCertificate() {
             <p>
               This achievement is a testament to {studentData.firstName} &nbsp;
               {studentData.lastName} hard work, dedication, and commitment to
-              academic excellence. Throughout their time at [Institution's
-              Name], they have demonstrated exceptional proficiency in their
-              chosen field, acquiring valuable skills and knowledge that will
-              serve as a solid foundation for their future endeavors.
+              academic excellence. Throughout their time at University of Juba,
+              they have demonstrated exceptional proficiency in their chosen
+              field, acquiring valuable skills and knowledge that will serve as
+              a solid foundation for their future endeavors.
             </p>
             <p>
-              We extend our heartfelt congratulations to [Student's Full Name]
+              We extend our heartfelt congratulations to{" "}
+              <strong>
+                {studentData.firstName} &nbsp;
+                {studentData.lastName}&nbsp;
+              </strong>{" "}
               for their remarkable accomplishment. They have exhibited the
               qualities of a diligent and motivated individual, and we have no
               doubt that they will continue to achieve great success in all

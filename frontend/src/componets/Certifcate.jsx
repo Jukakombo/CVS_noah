@@ -20,7 +20,7 @@ function Certifcate({ query, setQuery }) {
             <div className="flex items-center">
               <img
                 src={x?.profilePhoto}
-                className="w-[60px] rounded-[50%]"
+                className="w-[60px] h-[40px] rounded-[50%]"
                 alt="name"
               />
               <div className="ml-4">

@@ -29,32 +29,22 @@ const SearchById = () => {
   };
 
   const searchUserInDatabase = (keyword) => {
-    // Simulated database search, replace with your actual data fetching logic
-
     const database = datab;
     console.log(database);
-    // [
-    //   { id: 1, name: "John Doe" },
-    //   { id: 2, name: "Jane Smith" },
-    //   // Add more users to the database array
-    // ];
-
     return database.find(
-      (user) =>
-        user._id.toLowerCase() ||
-        user.lastName.toLowerCase() === keyword.toLowerCase()
+      (user) => user._id.toLowerCase() === keyword.toLowerCase()
     );
   };
 
   return (
-    <div className="bg-[#FCF7F7] ">
+    <div className="bg-[#FCF7F7] h-[100vh] ">
       <Navigation />
       <div className="py-8 md:px-16 md:flex items-center w-11/12 m-auto">
         <input
           type="text"
           value={searchKeyword}
           onChange={handleInputChange}
-          placeholder="Search by ID Number or Last Name"
+          placeholder="Search by ID Number ..."
           className="form__input  w-full p-4 outline-none"
         />
 
@@ -71,10 +61,6 @@ const SearchById = () => {
       <div className="w-11/12 m-auto py-8 md:px-16">
         {userInfo ? (
           <div>
-            {/* <h2>User Info</h2>
-            <p>ID: {userInfo._id}</p>
-            <p>Name: {userInfo?.name}</p> */}
-            {/* Display additional user information */}
             <div className="flex items-center grid sm:grid-cols-1 md:grid-cols-3 border-2 border-white pl-2">
               <div className="flex items-center">
                 <img

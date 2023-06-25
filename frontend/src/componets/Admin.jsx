@@ -42,7 +42,6 @@ function Admin({ setUser, user }) {
                 Students Certificates
               </div>
             </Link>
-
             {/* create certificate */}
             <Link to="create-certificate">
               <div className="functions">
@@ -78,6 +77,7 @@ function Admin({ setUser, user }) {
           </div>
 
           <div className="main_bar px-4 bg-white flex-[70%]">
+            <h1>Only visible for authorized admin</h1>
             <Outlet />
           </div>
         </div>
