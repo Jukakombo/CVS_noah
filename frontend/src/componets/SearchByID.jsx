@@ -81,19 +81,19 @@ const SearchById = () => {
                 <h1>College: {userInfo?.courseCompleted}</h1>
                 <h1>Grade Obtain: {userInfo?.gradeObtain}</h1>
               </div>
-              <div className=" bg-red-600 text-white rounded mx-2 px-2 my-2 py-2">
+              {/* <div className=" bg-red-600 text-white rounded mx-2 px-2 my-2 py-2">
                 <button onClick={() => dispatch(deleteContact(userInfo._id))}>
                   Delete Certificate
                 </button>
-              </div>
+              </div> */}
               <Link
                 to={`/view-certificate/${userInfo._id}`}
                 className=" bg-green-600 text-white rounded mx-2 px-2 my-2 py-2"
               >
-                <button>Print Certificate</button>
+                <button>View Certificate</button>
               </Link>
               <Link
-                to="/view-certificate"
+                to={`/view-certificate/${userInfo._id}`}
                 className=" bg-blue-600 text-white rounded mx-2 px-2 my-2 py-2"
               >
                 <button>Download Certificate</button>
