@@ -39,7 +39,7 @@ export const updateContact = async (req, res) => {
   } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`No certificate with id: ${id}`);
+    return res.status(404).send(`No certificate with such id: ${id} found`);
 
   const updatedContact = {
     firstName,
@@ -54,9 +54,7 @@ export const updateContact = async (req, res) => {
     profilePhoto,
     _id: id,
   };
-
   await Contacts.findByIdAndUpdate(id, updatedContact, { new: true });
-
   res.json(updatedContact);
 };
 

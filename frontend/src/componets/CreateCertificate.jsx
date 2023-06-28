@@ -10,12 +10,9 @@ import { useEffect } from "react";
 function CreateCertificate() {
   const certyificates = useSelector((state) => state.contacts);
   const [currentId, setCurrentId] = useState(0);
-  const update = useSelector((state) =>
-    currentId ? state.contacts.find((p) => p._id === currentId) : null
-  );
-
   const dispatch = useDispatch();
-  const [contact, setContact] = useState({
+
+  const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     dateOfBirth: "",
@@ -27,23 +24,36 @@ function CreateCertificate() {
     completeYear: "",
     profilePhoto: "",
   });
+
+  const updateMyCertificate = useSelector((state) =>
+    currentId ? state.contacts.find((p) => p._id === currentId) : null
+  );
+
   useEffect(() => {
-    if (update) setContact(update);
-  }, [update]);
+    if (updateMyCertificate) setFormData(updateMyCertificate);
+  }, [updateMyCertificate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (currentId === 0) {
-      dispatch(createContact(contact));
+    // if (currentId === 0) {
+    //   dispatch(createContact(contact));
+    //   clear();
+    // } else {
+    //   dispatch(updateContact(currentId, contact));
+    //   clear();
+    // }
+    if (currentId) {
+      dispatch(updateContact(currentId, formData));
       clear();
     } else {
-      dispatch(updateContact(currentId, contact));
+      dispatch(createContact(formData));
       clear();
     }
   };
+
   const clear = () => {
-    setContact({
+    setFormData({
       firstName: "",
       lastName: "",
       dateOfBirth: "",
@@ -77,10 +87,10 @@ function CreateCertificate() {
                   type="text"
                   placeholder="First Name"
                   name="firstName"
-                  value={contact.firstName}
+                  value={formData.firstName}
                   onChange={(e) =>
-                    setContact({
-                      ...contact,
+                    setFormData({
+                      ...formData,
                       firstName: e.target.value,
                     })
                   }
@@ -98,10 +108,10 @@ function CreateCertificate() {
                   type="text"
                   placeholder="Last Name "
                   name="lastName"
-                  value={contact.lastName}
+                  value={formData.lastName}
                   onChange={(e) =>
-                    setContact({
-                      ...contact,
+                    setFormData({
+                      ...formData,
                       lastName: e.target.value,
                     })
                   }
@@ -119,10 +129,10 @@ function CreateCertificate() {
                   type="date"
                   placeholder="Date of Birthday"
                   name="dateOfBirth"
-                  value={contact.dateOfBirth}
+                  value={formData.dateOfBirth}
                   onChange={(e) =>
-                    setContact({
-                      ...contact,
+                    setFormData({
+                      ...formData,
                       dateOfBirth: e.target.value,
                     })
                   }
@@ -140,10 +150,10 @@ function CreateCertificate() {
                   type="text"
                   placeholder="Contact "
                   name="contact"
-                  value={contact.contact}
+                  value={formData.contact}
                   onChange={(e) =>
-                    setContact({
-                      ...contact,
+                    setFormData({
+                      ...formData,
                       contact: e.target.value,
                     })
                   }
@@ -161,10 +171,10 @@ function CreateCertificate() {
                   type="text"
                   placeholder="sex "
                   name="sex"
-                  value={contact.sex}
+                  value={formData.sex}
                   onChange={(e) =>
-                    setContact({
-                      ...contact,
+                    setFormData({
+                      ...formData,
                       sex: e.target.value,
                     })
                   }
@@ -190,10 +200,10 @@ function CreateCertificate() {
                   type="text"
                   placeholder="Course Completed "
                   name="courseCompleted"
-                  value={contact.courseCompleted}
+                  value={formData.courseCompleted}
                   onChange={(e) =>
-                    setContact({
-                      ...contact,
+                    setFormData({
+                      ...formData,
                       courseCompleted: e.target.value,
                     })
                   }
@@ -228,10 +238,10 @@ function CreateCertificate() {
                   type="gradeObtain"
                   placeholder="Grade Obtain "
                   name="gradeObtain"
-                  value={contact.gradeObtain}
+                  value={formData.gradeObtain}
                   onChange={(e) =>
-                    setContact({
-                      ...contact,
+                    setFormData({
+                      ...formData,
                       gradeObtain: e.target.value,
                     })
                   }
@@ -249,10 +259,10 @@ function CreateCertificate() {
                   type="date"
                   placeholder="Year Started "
                   name="startedYear"
-                  value={contact.startedYear}
+                  value={formData.startedYear}
                   onChange={(e) =>
-                    setContact({
-                      ...contact,
+                    setFormData({
+                      ...formData,
                       startedYear: e.target.value,
                     })
                   }
@@ -273,10 +283,10 @@ function CreateCertificate() {
                   type="text"
                   placeholder="Completed year "
                   name="completeYear"
-                  value={contact.completeYear}
+                  value={formData.completeYear}
                   onChange={(e) =>
-                    setContact({
-                      ...contact,
+                    setFormData({
+                      ...formData,
                       completeYear: e.target.value,
                     })
                   }
@@ -297,13 +307,13 @@ function CreateCertificate() {
                   type="file"
                   multiple={false}
                   onDone={({ base64 }) =>
-                    setContact({ ...contact, profilePhoto: base64 })
+                    setFormData({ ...formData, profilePhoto: base64 })
                   }
                 />
               </div>
             </div>
             <button className="btnPrimary text-white font-bold my-8   text-center w-[50%] m-auto ">
-              {currentId ? "Update Certificate" : " Certificate"}
+              {currentId ? "Update Certificate" : " Create Certificate"}
             </button>
           </form>
           <UpdateCertificate

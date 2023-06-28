@@ -8,6 +8,6 @@ import {
 const ngoRouter = express.Router();
 ngoRouter.get("/", fetchNgodatas);
 ngoRouter.post("/", createNgodata);
-ngoRouter.put("/", updateNgodata);
-ngoRouter.delete("/", deleteNgodata);
+ngoRouter.put("/:id", updateNgodata);
+ngoRouter.delete("/:id", deleteNgodata);
 export default ngoRouter;
