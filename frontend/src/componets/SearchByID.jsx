@@ -37,9 +37,9 @@ const SearchById = () => {
   };
 
   return (
-    <div className="bg-[#FCF7F7] h-[100vh] ">
+    <div className="bg-[#FCF7F7]  ">
       <Navigation />
-      <div className="py-8 md:px-16 md:flex items-center w-11/12 m-auto">
+      <div className="py-8 md:px-16 md:flex items-center w-11/12 m-auto lg:h-[80vh]">
         <input
           type="text"
           value={searchKeyword}

@@ -6,7 +6,7 @@ function Homepage() {
     <div className="w-11/12 m-auto py-8 h-[100vh]">
       <div className="grid sm:grid-cols-1 md:grid-cols-2">
         <div className="">
-          <h1 className="tex-3xl homepage__font">
+          <h1 className=" homepage__font">
             Welcome to our Certificate Management System! We are thrilled to
             have you here and are confident that our system will exceed your
             expectations

@@ -39,11 +39,13 @@ function Navigation() {
     <div className=" primaryBackground">
       <div className="  primary__width  py-4 md:flex items-center justify-between">
         <div className="flex  items-center ">
-          <img
-            className="md:w-[60px] mr-4 mobile__logo"
-            src={logo}
-            alt="logo"
-          />
+          <Link to="/">
+            <img
+              className="md:w-[60px] mr-4 mobile__logo"
+              src={logo}
+              alt="logo"
+            />
+          </Link>
           <div className="text-center font-bold text-white logo__text">
             <p>University of Juba</p>
             <p>Certificate Verification System</p>

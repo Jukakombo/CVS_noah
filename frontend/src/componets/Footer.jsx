@@ -1,8 +1,15 @@
 import React from "react";
 import logo from "../assets/Uoj-logo.png";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 function Footer() {
+  const [openHandler, setOpenHandler] = useState(true);
+
+  const [subcribe, setSubcribe] = useState(" ");
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setOpenHandler(false);
   };
   return (
     <>
@@ -20,30 +27,50 @@ function Footer() {
             <h1 className="text-2xl font-bold text-white">Navigations</h1>
             <ul>
               <ul>
-                <li className="text-xl text-white cursor-pointer">Home</li>
-                <li className="text-xl text-white cursor-pointer">
-                  Check / verify Certificate
-                </li>
-                <li className="text-xl text-white cursor-pointer">About Us</li>
-
-                <li className="text-xl text-white cursor-pointer">Contact</li>
+                <Link to="/">
+                  <li className="text-xl text-white cursor-pointer">Home</li>
+                </Link>
+                <Link to="/Check">
+                  <li className="text-xl text-white cursor-pointer">
+                    Check / verify Certificate
+                  </li>
+                </Link>
+                <Link to="/About us">
+                  <li className="text-xl text-white cursor-pointer">
+                    About Us
+                  </li>
+                </Link>
+                <Link to="/Contact">
+                  <li className="text-xl text-white cursor-pointer">Contact</li>
+                </Link>
+                {/* <Link to="/Check"></Link> */}
               </ul>
             </ul>
           </div>
           <div className="">
             <h1 className="text-2xl font-bold text-white">Links</h1>
             <ul>
-              <li className="text-xl text-white cursor-pointer">
-                Privacy Policy
-              </li>
+              <Link to="/privacy-policy">
+                <li className="text-xl text-white cursor-pointer">
+                  Privacy Policy
+                </li>
+              </Link>
 
-              <li className="text-xl text-white cursor-pointer">
-                How it works
-              </li>
-              <li className="text-xl text-white cursor-pointer">Admin/Login</li>
-              <li className="text-xl text-white cursor-pointer">
-                Terms & Conditions
-              </li>
+              <Link to="/How It Works">
+                <li className="text-xl text-white cursor-pointer">
+                  How it works
+                </li>
+              </Link>
+              <Link to={"/Login"}>
+                <li className="text-xl text-white cursor-pointer">
+                  Admin/Login
+                </li>
+              </Link>
+              <Link to="/terms-and-condition">
+                <li className="text-xl text-white cursor-pointer">
+                  Terms & Conditions
+                </li>
+              </Link>
             </ul>
           </div>
           <div className="">
@@ -54,20 +81,27 @@ function Footer() {
               </li>
             </ul>
             <form onSubmit={handleSubmit}>
-              <div className="flex items-center flex-col">
-                <input
-                  type="text"
-                  name="subscribe"
-                  placeholder="Enter email...."
-                  className="p-2 rounded w-full my-2 outline-none"
-                />
-                <button
-                  type="submit"
-                  className="btnPrimary text-white w-full my-2"
-                >
-                  Subscribe
-                </button>
-              </div>
+              {openHandler ? (
+                <div className="flex items-center flex-col">
+                  <input
+                    type="email"
+                    name="subscribe"
+                    placeholder="Enter email...."
+                    className="p-2 rounded w-full my-2 outline-none"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    className="btnPrimary text-white w-full my-2"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              ) : (
+                <h1 className="text-green-600 font-bold text-2xl bg-gray-100 p-2 rounded text-center mt-2">
+                  Thank for subscribing into our newsletter!
+                </h1>
+              )}
             </form>
           </div>
         </div>

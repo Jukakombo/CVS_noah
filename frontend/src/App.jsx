@@ -15,6 +15,9 @@ import DeleteCertificate from "./componets/DeleteCertificate";
 import Certificates from "./componets/Certificates";
 import SearchById from "./componets/SearchByID";
 import Loader from "./componets/Loader";
+import ContactUs from "./componets/ContactUs";
+import PrivacyPolicy from "./componets/PrivacyPolicy";
+import TermsAndCondition from "./componets/TermsAndCondition";
 function App() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -52,6 +55,13 @@ function App() {
             <Route path="/About Us" exact element={<AboutUs />} />
             <Route path="/Login" exact element={<Login />} />
             <Route path="/register" exact element={<Register />} />
+            <Route path="/Contact" element={<ContactUs />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route
+              path="/terms-and-condition"
+              element={<TermsAndCondition />}
+            />
+
             <Route
               path="/view-certificate/:id"
               exact
