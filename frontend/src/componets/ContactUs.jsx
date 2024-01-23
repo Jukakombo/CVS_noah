@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import Navigation from "./Navigation";
+import { useDispatch } from "react-redux";
 import Footer from "./Footer";
+import { createNews } from "../actions/news";
 const initialState = {
   firstName: "",
   lastName: "",
@@ -11,16 +13,18 @@ const initialState = {
   message: "",
 };
 function ContactUs() {
+  const dispatch = useDispatch();
   const [contacts, setContacts] = useState(initialState);
   const { firstName, lastName, email, subject, message, phone } = contacts;
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    dispatch(createNews(contacts));
     clear();
-    console.log(contacts);
   };
 
-  const handleChange = () => {
-    //
+  const handleChange = (e) => {
+    setContacts({ ...contacts, [e.target.name]: e.target.value });
   };
   const clear = () => {
     setContacts({
@@ -50,7 +54,7 @@ function ContactUs() {
               </label>
               <input
                 type="text"
-                name="userName"
+                name="firstName"
                 id="userName"
                 className="bg-gray-100 p-2 outline-none rounded"
                 placeholder="Please enter your first name"
@@ -128,7 +132,7 @@ function ContactUs() {
                 className="bg-gray-100 p-2 outline-none rounded"
                 name="message"
                 value={message}
-                onChange={(e) => setContacts({ message: e.target.value })}
+                onChange={handleChange}
                 cols="30"
                 rows="10"
               ></textarea>

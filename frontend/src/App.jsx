@@ -18,12 +18,17 @@ import Loader from "./componets/Loader";
 import ContactUs from "./componets/ContactUs";
 import PrivacyPolicy from "./componets/PrivacyPolicy";
 import TermsAndCondition from "./componets/TermsAndCondition";
+import ContactLists from "./componets/ContactLists";
+import { getNews } from "./actions/news";
 function App() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   useEffect(() => {
     dispatch(getContacts());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(getNews());
   }, [dispatch]);
 
   const ProtectedRoute = ({ children }) => {
@@ -81,6 +86,7 @@ function App() {
                 element={<DeleteCertificate />}
               />
               <Route path="certificates" element={<Certificates />} />
+              <Route path="contact-list" element={<ContactLists />} />
             </Route>
           </Routes>
         </BrowserRouter>

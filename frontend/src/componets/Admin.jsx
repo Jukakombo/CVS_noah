@@ -65,6 +65,14 @@ function Admin({ setUser, user }) {
                   Delete Certificate
                 </div>
               </div>
+              {/* inbox */}
+              <Link to="contact-list">
+                <div className="functions">
+                  <div className="p-2 bg-[#D05EE2] m-4 text-white rounded cursor-pointer">
+                    Contacts
+                  </div>
+                </div>
+              </Link>
             </Link>
             {/*logout  */}
             <button onClick={() => dispatch(logout)}>

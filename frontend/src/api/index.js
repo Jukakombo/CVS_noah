@@ -1,6 +1,6 @@
 import axios from "axios";
 const API = axios.create({
-  baseURL: "https://certificate-management-system.onrender.com",
+  baseURL: "http://localhost:5000",
 });
 
 // const url = "http://localhost:5000/contacts";
@@ -27,7 +27,6 @@ export const createNews = (news) => API.post("/news", news);
 export const updateNews = (id, newsupdatedNews) =>
   API.patch(`/news/${id}`, newsupdatedNews);
 export const deleteNews = (id) => API.delete(`/news/${id}`);
-
 // comments api call endpoints
 export const fetchComments = () => API.get("/comment");
 export const createComment = (comment) => API.post("/comment", comment);

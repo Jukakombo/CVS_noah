@@ -19,7 +19,7 @@ const news = (news = [], action) => {
       );
 
     case DELETE_NEWS:
-      return news.filter((new1) => new1._id !== action.payload);
+      return news.filter((news1) => news1._id !== action.payload);
     default:
       return news;
   }
