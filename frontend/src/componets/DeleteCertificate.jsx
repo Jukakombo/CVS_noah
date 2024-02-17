@@ -1,20 +1,17 @@
 import React from "react";
 
-import ali from "../assets/ali.png";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContact } from "../actions/contacts";
-import { AiOutlineSearch } from "react-icons/ai";
-import { Link } from "react-router-dom";
 
 function DeleteCertificate() {
   const dispatch = useDispatch();
   const certyificates = useSelector((state) => state.contacts);
 
   return (
-    <div className=" w-full py-4 bg-pink-100 my-4 p-4 rounded ">
+    <div className=" w-full py-4 admin_bg_sidbar text-white my-4 p-4 rounded ">
       {certyificates.map((x) => (
         <div
-          className="flex items-center grid sm:grid-cols-1 md:grid-cols-3 border-2 border-white pl-2"
+          className="  items-center grid sm:grid-cols-1 md:grid-cols-3 border-2 border-white pl-2"
           key={x._id}
         >
           <div className="flex items-center">

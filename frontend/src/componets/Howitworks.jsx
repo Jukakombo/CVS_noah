@@ -4,14 +4,12 @@ import Footer from "./Footer";
 
 function Howitworks() {
   return (
-    <div>
+    <div className="flex justify-between flex-col">
       <Navigation />
       <div className="w-11/12 m-auto">
         <div className="">
-          <h1 className="text-xl font-bold py-8 text-[#d580e2]">
-            How it's works
-          </h1>
-          <div className="text-xl py-8 text-2xl">
+          <h1 className="text-xl font-bold py-8 heading">How it's works</h1>
+          <div className="  pb-8 text-2xl">
             <p className="my-2">
               1. Log in to the Certificate Management System using your username
               and password.

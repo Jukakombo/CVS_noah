@@ -70,7 +70,7 @@ function CreateCertificate() {
   return (
     <div>
       <div className="">
-        <h1 className="font-bold text-center text-[#d05ee2] py-4">
+        <h1 className="font-bold text-center text-[#3673fd] py-4">
           Create Student Certificate
         </h1>
         <div className="">
@@ -312,7 +312,7 @@ function CreateCertificate() {
                 />
               </div>
             </div>
-            <button className="btnPrimary text-white font-bold my-8   text-center w-[50%] m-auto ">
+            <button className="admin_btn p-4 rounded-md text-white font-bold my-8   text-center w-[50%] m-auto ">
               {currentId ? "Update Certificate" : " Create Certificate"}
             </button>
           </form>

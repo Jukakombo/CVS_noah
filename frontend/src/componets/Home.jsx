@@ -6,10 +6,9 @@ import Footer from "./Footer";
 
 function Home() {
   return (
-    <div>
+    <div className="flex flex-col h-screen justify-between">
       <Navigation />
       <Homepage />
-
       <Footer />
     </div>
   );

@@ -14,12 +14,19 @@ const initialState = {
 };
 function ContactUs() {
   const dispatch = useDispatch();
+  const [success, setSuccess] = useState(false);
   const [contacts, setContacts] = useState(initialState);
   const { firstName, lastName, email, subject, message, phone } = contacts;
   const handleSubmit = (e) => {
     e.preventDefault();
 
     dispatch(createNews(contacts));
+    setTimeout(() => {
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 5000);
+    }, 3000);
     clear();
   };
 
@@ -39,8 +46,8 @@ function ContactUs() {
   return (
     <>
       <Navigation />
-      <div className="w-11/12 m-auto py-8">
-        <h1 className="text-center font-bold text-xl my-4 text-[#d580e2]">
+      <div className="w-11/12 m-auto py-8 border-2 border-white">
+        <h1 className="text-center font-bold text-xl my-4 heading">
           Contact Us
         </h1>
         <p className="text-center lg:text-lg">
@@ -138,8 +145,16 @@ function ContactUs() {
               ></textarea>
             </div>
           </div>
-          <div className="text-center">
-            <button className="bg-[#d580e2] text-white font-bold p-2 rounded w-[200px]  ">
+          {success && (
+            <div className="bg-green-400 p-4">
+              <h1 className="text-2xl text-white text-center font-bold ">
+                your message has successfully sent🎉
+              </h1>
+            </div>
+          )}
+
+          <div className="text-center mt-4">
+            <button className="btnPrimary text-white font-bold p-2 rounded w-[200px]  ">
               Submit
             </button>
           </div>

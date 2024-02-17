@@ -20,6 +20,8 @@ import PrivacyPolicy from "./componets/PrivacyPolicy";
 import TermsAndCondition from "./componets/TermsAndCondition";
 import ContactLists from "./componets/ContactLists";
 import { getNews } from "./actions/news";
+import SendEmail from "./componets/SendEmail";
+import NotifyNoah from "./componets/NotifyNoah";
 function App() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -72,7 +74,7 @@ function App() {
               exact
               element={<ViewCertificate />}
             />
-
+            <Route path="/request-check" exact element={<SendEmail />} />
             <Route
               path="/admin"
               element={<Admin setUser={setUser} user={user} />}
@@ -85,6 +87,8 @@ function App() {
                 path="delete-certificate"
                 element={<DeleteCertificate />}
               />
+
+              <Route path="send-request-noah" element={<NotifyNoah />} />
               <Route path="certificates" element={<Certificates />} />
               <Route path="contact-list" element={<ContactLists />} />
             </Route>

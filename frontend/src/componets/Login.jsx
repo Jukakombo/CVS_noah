@@ -22,10 +22,10 @@ function Login() {
   };
 
   return (
-    <div className="bg-[#FCF7F7] h-full ">
+    <div className=" text-white flex justify-between flex-col h-screen ">
       <Navigation />
       <div className="flex items-center justify-center py-16 px-4">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="border-2 border-white p-8">
           <>
             <div className="flex flex-col">
               <input

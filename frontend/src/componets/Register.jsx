@@ -22,10 +22,10 @@ function Register() {
     dispatch(signup(formData, navigate));
   };
   return (
-    <div className="bg-[#FCF7F7]">
+    <div className=" flex justify-between flex-col">
       <Navigation />
-      <form onSubmit={handleSubmit}>
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 w-7/12 m-auto  py-16">
+      <form onSubmit={handleSubmit} className="m-4">
+        <div className="border-2 border-white p-4  grid sm:grid-cols-1 md:grid-cols-2 w-7/12 m-auto  py-16">
           <div className="flex flex-col m-2">
             <input
               type="text"

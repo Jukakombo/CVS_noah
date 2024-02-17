@@ -29,7 +29,7 @@ function ViewCertificate() {
   return (
     <div>
       <Navigation />
-      <div className="   m-4  w-11/12 m-auto">
+      <div className="w-11/12 m-auto">
         <div id="pdf" className=" ">
           <div className="m-2 p-2 relative">
             <img
@@ -51,49 +51,39 @@ function ViewCertificate() {
                 </div>
               </div>
               <h1 className="font-bold  text-center pb-4">
-                Certificate of Graduation
+                Certificate of Completion
               </h1>
-              <p>
+              <br />
+              <p className="text-center">
                 This is to certify that{" "}
                 <span className="font-bold">
                   {studentData.firstName} &nbsp;
                   {studentData.lastName}
                 </span>{" "}
-                has satisfactorily fulfilled all the graduation requirements
-                from Juba University.
+                has Graduated University of Juba.
               </p>
-
-              <p className="text-[16px]">
-                Field of Study: {studentData.courseCompleted} <br /> Grade
-                Obtained:&nbsp;
+              <br />
+              <p className="text-center text-[16px]">
+                Field Attend: {studentData.courseCompleted}
+              </p>
+              <p className="text-center">
+                Grade Obtained:&nbsp;
                 {studentData.gradeObtain}
               </p>
 
-              <p className="text-[16px]">
-                Years of Study: from {studentData.startedYear} to{" "}
-                {studentData.completeYear}
-              </p>
-
               <br />
-              <p>
-                We extend our warmest congratulations to{" "}
-                <strong>
-                  {studentData.firstName} &nbsp;
-                  {studentData.lastName}&nbsp;
-                </strong>{" "}
-                for {studentData.sex === "Female" ? "her" : "his"} exceptional
-                achievement. Throughout{" "}
-                {studentData.sex === "Female" ? "her" : "his"} academic journey,
-                they have demonstrated diligence and motivation, which are
-                commendable qualities. We have full confidence in{" "}
-                {studentData.sex === "Female" ? "her" : "his"} ability to
-                accomplish great things in all{" "}
-                {studentData.sex === "Female" ? "her" : "his"} future pursuits.
+              <p className="text-center">
+                He/She successfully completed the course prescribed by the
+                University of Juba
+              </p>
+              <p className="text-center">
+                Years of Study: from&nbsp;
+                <strong>{studentData?.startedYear} </strong>&nbsp;to &nbsp;
+                <strong>{studentData?.completeYear}</strong>
               </p>
 
               <div className="flex justify-between items-center">
                 <div className="">
-                  {/* <p className="pt-4">(Official Seal)</p> */}
                   <img
                     src={signature}
                     alt="signature"

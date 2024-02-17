@@ -11,7 +11,7 @@ function Certificates() {
   };
   return (
     <div className=" ">
-      <h1 className="font-bold text-center text-[#d05ee2] py-4">
+      <h1 className="font-bold text-center text-[#3673fd] py-4">
         Search for Student Certifcate
       </h1>
       <div className="">

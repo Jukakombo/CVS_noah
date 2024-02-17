@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 import { deleteContact } from "../actions/contacts";
+import SendEmail from "./SendEmail";
 const SearchById = () => {
   const dispatch = useDispatch();
-
+  const [open, setOpen] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [userInfo, setUserInfo] = useState(null);
   const certyificates = useSelector((state) => state.contacts);
@@ -37,31 +38,41 @@ const SearchById = () => {
   };
 
   return (
-    <div className="bg-[#FCF7F7]  ">
+    <div className=" flex flex-col justify-between h-screen  ">
       <Navigation />
-      <div className="py-8 md:px-16 md:flex items-center w-11/12 m-auto lg:h-[80vh]">
+      <div className="py-8 md:px-16 md:flex items-center w-11/12 m-auto ">
         <input
           type="text"
           value={searchKeyword}
           onChange={handleInputChange}
           placeholder="Search by ID Number ..."
-          className="form__input  w-full p-4 outline-none"
+          className="form__input text-gray-600  w-full p-4 outline-none"
         />
-
         <button
           onClick={handleSearch}
           type="submit"
-          className="search__button md:w-32 px-4 text-white p-4 rounded bg-[#d05ee2] mx-4 flex items-center "
+          className="search__button md:w-32 px-4 text-white p-4 rounded bg-[#3673fd] mx-4 flex items-center "
         >
           <AiOutlineSearch size={30} />
           Search
         </button>
         {/* user Information to be display on the screen */}
       </div>
+      <div className="py-8 md:px-16  w-11/12 m-auto">
+        <button
+          className="w-full bg-[#3673fd] mb-2 text-white p-2 rounded-md"
+          onClick={() => setOpen((prev) => !prev)}
+        >
+          {open
+            ? "Alread have Access? Check"
+            : "Are you a Guest / NGOs? Request Acces"}
+        </button>
+        {open && <SendEmail />}
+      </div>
       <div className="w-11/12 m-auto py-8 md:px-16">
         {userInfo ? (
           <div>
-            <div className="flex items-center grid sm:grid-cols-1 md:grid-cols-3 border-2 border-white pl-2">
+            <div className=" items-center grid sm:grid-cols-1 md:grid-cols-3 border-2 border-white pl-2">
               <div className="flex items-center">
                 <img
                   src={userInfo?.profilePhoto}
@@ -102,7 +113,9 @@ const SearchById = () => {
           </div>
         ) : (
           searchKeyword && (
-            <p>Invalid Id Number or User not found in the database.</p>
+            <p className="text-red-600 font-bold text-xl">
+              Invalid Id Number or User not found in the database.
+            </p>
           )
         )}
       </div>
