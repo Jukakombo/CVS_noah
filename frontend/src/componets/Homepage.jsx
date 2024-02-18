@@ -10,7 +10,7 @@ function Homepage() {
           <h1 className="text-3xl heading">
             Welcome to our Certificate Management System!
           </h1>
-          <h1 className=" homepage__font mt-8">
+          <h1 className="  mt-8">
             We are thrilled to have you here and are confident that our system
             will exceed your expectations
           </h1>

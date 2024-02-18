@@ -93,7 +93,11 @@ function ViewCertificate() {
                   <p className="font-bold">John Akec</p>
                   <p className="">Date:&nbsp;{currentDate}</p>
                 </div>
-                <div className="">Certificate No:&nbsp;<span className="text-blue-800 font-bold">{studentData._id}</span></div>
+                <div className="">
+                <div className="">Index Number: &nbsp; <span className="font-bold">{studentData?.customId}</span></div>
+                <div className="">Certificate No:&nbsp;<span className="text-blue-800 font-bold">{studentData._id}</span>
+                </div>
+                </div>
               </div>
             </div>
           </div>
