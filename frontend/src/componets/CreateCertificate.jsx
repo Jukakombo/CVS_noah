@@ -23,6 +23,7 @@ function CreateCertificate() {
     startedYear: "",
     completeYear: "",
     profilePhoto: "",
+    customId:""
   });
 
   const updateMyCertificate = useSelector((state) =>
@@ -35,14 +36,7 @@ function CreateCertificate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // if (currentId === 0) {
-    //   dispatch(createContact(contact));
-    //   clear();
-    // } else {
-    //   dispatch(updateContact(currentId, contact));
-    //   clear();
-    // }
+ 
     if (currentId) {
       dispatch(updateContact(currentId, formData));
       clear();
@@ -64,6 +58,7 @@ function CreateCertificate() {
       startedYear: "",
       completeYear: "",
       profilePhoto: "",
+      customId:""
     });
     setCurrentId(0);
   };
@@ -312,9 +307,21 @@ function CreateCertificate() {
                 />
               </div>
             </div>
-            <button className="admin_btn p-4 rounded-md text-white font-bold my-8   text-center w-[50%] m-auto ">
+            <div className="grid md:grid-cols-2 items-center gap-4">
+              <div className="">
+                <input type="text" value={formData.customId}  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      customId: e.target.value,
+                    })
+                  } 
+                  className="w-full p-2 rounded-md outline-none bg-gray-200 text-gray-500"
+                  placeholder="Custom Id Number" />
+              </div>
+            <button className="admin_btn p-2 rounded-md text-white font-bold my-8   text-center w-full m-auto ">
               {currentId ? "Update Certificate" : " Create Certificate"}
             </button>
+            </div>
           </form>
           <UpdateCertificate
             setCurrentId={setCurrentId}

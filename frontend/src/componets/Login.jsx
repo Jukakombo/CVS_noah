@@ -27,8 +27,9 @@ function Login() {
       <div className="flex items-center justify-center py-16 px-4">
         <form onSubmit={handleSubmit} className="border-2 border-white p-8">
           <>
-            <div className="flex flex-col">
+            <div className="flex flex-col ">
               <input
+             
                 type="email"
                 name="email"
                 value={formData.email}
@@ -40,13 +41,13 @@ function Login() {
                 }
                 required
                 placeholder="Enter your Email ..."
-                className=" w-full my-4 p-2 outline-none"
+                className=" w-full my-4 p-2 outline-none text-gray-500"
               />
             </div>
             <div className="">
               <input
                 type="password"
-                className=" w-full my-4 p-2 outline-none"
+                className=" w-full my-4 p-2 outline-none text-gray-500"
                 name="password"
                 placeholder="Enter your Password ...   "
                 value={formData.password}

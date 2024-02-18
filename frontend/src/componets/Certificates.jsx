@@ -5,6 +5,7 @@ import { useState } from "react";
 
 function Certificates() {
   const [query, setQuery] = useState("");
+  
   const handleInputChange = (event) => {
     const inputValue = event.target.value.toLowerCase();
     setQuery(inputValue);
@@ -20,7 +21,7 @@ function Certificates() {
             <input
               onChange={handleInputChange}
               type="text"
-              className="flex flex-1 p-2 outline-none rounded"
+              className="flex flex-1 p-2 outline-none rounded text-gray-500"
               placeholder="Search student's certificate by id number or last name"
             />
             <AiOutlineSearch className="ml-4 text-gray-700" size={30} />

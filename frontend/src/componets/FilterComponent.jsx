@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
 const FilterComponent = ({ data }) => {
@@ -8,7 +9,7 @@ const FilterComponent = ({ data }) => {
     const inputValue = event.target.value.toLowerCase();
     setQuery(inputValue);
 
-    const filteredItems = data.filter((item) =>
+    const filteredItems = data.filter((item) => 
       item.name.toLowerCase().includes(inputValue)
     );
     setFilteredData(filteredItems);

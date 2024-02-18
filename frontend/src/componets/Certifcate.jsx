@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import ali from "../assets/ali.png";
+ 
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContact } from "../actions/contacts";
@@ -8,11 +8,13 @@ import { deleteContact } from "../actions/contacts";
 function Certifcate({ query, setQuery }) {
   const dispatch = useDispatch();
   const certyificates = useSelector((state) => state.contacts);
-
+ 
   return (
     <div className=" w-full py-4 admin_bg_sidbar text-white my-4 p-4 rounded ">
       {certyificates
-        .filter((x) => x.firstName?.toLowerCase().includes(query))
+        .filter((x) => x.firstName?.toLowerCase().includes(query)|| x.customId?.toLowerCase().includes(query)|| x._id?.toLowerCase().includes(query)) 
+
+
         .map((x) => (
           <div
             className="  items-center grid sm:grid-cols-1 md:grid-cols-3 border-2 border-white pl-2"
@@ -36,6 +38,10 @@ function Certifcate({ query, setQuery }) {
             <div>
               <h1>College: {x?.courseCompleted}</h1>
               <h1>Grade Obtain: {x?.gradeObtain}</h1>
+            </div>
+            <div>
+              <h1>Index Number: {x?.customId}</h1>
+              {/* <h1>Grade Obtain: {x?.gradeObtain}</h1> */}
             </div>
             <div className=" bg-red-600 text-white rounded mx-2 px-2 my-2 py-2">
               <button onClick={() => dispatch(deleteContact(x._id))}>

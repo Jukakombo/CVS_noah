@@ -11,6 +11,7 @@ const contactSchema = mongoose.Schema(
     startedYear: String,
     completeYear: String,
     profilePhoto: String,
+    customId:String
   },
   { timestamps: true }
 );

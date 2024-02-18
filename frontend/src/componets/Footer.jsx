@@ -14,17 +14,10 @@ function Footer() {
   return (
     <>
       <div className="primaryBackground py-4  ">
-        <div className="grid sm:grid-cols-1 md:grid-cols-4 gap-4 primary__width">
-          <div className="text-center flex flex-col items-center text-white">
-            <img src={logo} className="w-[60px] text-center" alt="Logo" />
-            <p>
-              This system is designed to help you manage and track your
-              certificates. With this system, you can easily store, organize,
-              and access all of your certificates in one place.
-            </p>
-          </div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 primary__width">
+        
           <div className="">
-            <h1 className="text-2xl font-bold text-white">Navigations</h1>
+            <h1 className="text-2xl font-bold text-white heading">Navigations</h1>
             <ul>
               <ul>
                 <Link to="/">
@@ -48,7 +41,7 @@ function Footer() {
             </ul>
           </div>
           <div className="">
-            <h1 className="text-2xl font-bold text-white">Links</h1>
+            <h1 className="text-2xl font-bold text-white heading">Links</h1>
             <ul>
               <Link to="/privacy-policy">
                 <li className="text-xl text-white cursor-pointer">
@@ -74,7 +67,7 @@ function Footer() {
             </ul>
           </div>
           <div className="">
-            <h1 className="text-2xl font-bold text-white">Subscribe</h1>
+            <h1 className="text-2xl font-bold text-white heading">Subscribe</h1>
             <ul>
               <li className="text-xl text-white cursor-pointer">
                 Stay updated with us

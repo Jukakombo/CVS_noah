@@ -31,9 +31,9 @@ const SearchById = () => {
 
   const searchUserInDatabase = (keyword) => {
     const database = datab;
-    console.log(database);
+  
     return database.find(
-      (user) => user._id.toLowerCase() === keyword.toLowerCase()
+      (user) => user._id.toLowerCase() === keyword.toLowerCase()||user.customId.toLowerCase() === keyword.toLowerCase() 
     );
   };
 
@@ -45,7 +45,7 @@ const SearchById = () => {
           type="text"
           value={searchKeyword}
           onChange={handleInputChange}
-          placeholder="Search by ID Number ..."
+          placeholder="Search by ID Number or index Number..."
           className="form__input text-gray-600  w-full p-4 outline-none"
         />
         <button

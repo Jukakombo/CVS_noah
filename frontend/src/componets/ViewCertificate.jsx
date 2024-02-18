@@ -29,7 +29,7 @@ function ViewCertificate() {
   return (
     <div>
       <Navigation />
-      <div className="w-11/12 m-auto">
+      <div className="w-11/12 m-auto text-black">
         <div id="pdf" className=" ">
           <div className="m-2 p-2 relative">
             <img
@@ -37,7 +37,7 @@ function ViewCertificate() {
               src={certificate}
               alt="certificate"
             />
-            <div className="absolute top-14 left-0 right-0 px-16  w-[817px]  ">
+            <div className="absolute top-14 left-0 right-0 px-16  w-[817px] text-black ">
               <div className="flex items-center justify-between py-2">
                 <div className="">
                   <img src={logo} alt="logo" className="w-[50px]" />
@@ -93,7 +93,7 @@ function ViewCertificate() {
                   <p className="font-bold">John Akec</p>
                   <p className="">Date:&nbsp;{currentDate}</p>
                 </div>
-                <div className="">Certificate No:&nbsp;{studentData._id}</div>
+                <div className="">Certificate No:&nbsp;<span className="text-blue-800 font-bold">{studentData._id}</span></div>
               </div>
             </div>
           </div>
