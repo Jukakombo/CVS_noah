@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import Comments from '../models/comment.js';
+import mongoose from "mongoose";
+import Comments from "../models/comment.js";
 
 export const fetchComments = async (req, res) => {
   const allComments = await Comments.find();
@@ -12,6 +12,7 @@ export const fetchComments = async (req, res) => {
 
 export const createComment = async (req, res) => {
   const comment = req.body;
+
   const newComment = new Comments(comment);
   try {
     await newComment.save();
@@ -45,5 +46,5 @@ export const deleteComment = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(404).send(`No id Comment is found with such id:${_id}`);
   await Comments.findByIdAndRemove(id);
-  res.send('News was sucessfuly deleted');
+  res.send("News was sucessfuly deleted");
 };

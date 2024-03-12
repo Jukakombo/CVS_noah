@@ -29,7 +29,8 @@ export const updateNews = (id, newsupdatedNews) =>
 export const deleteNews = (id) => API.delete(`/news/${id}`);
 // comments api call endpoints
 export const fetchComments = () => API.get("/comment");
-export const createComment = (comment) => API.post("/comment", comment);
+export const createComment = (notification) =>
+  API.post("/comment", notification);
 export const updateComment = (id, updatedComment) =>
   API.put(`/comment/${id}`, updatedComment);
 export const deleteComment = (id) => API.delete(`/comment/${id}`);

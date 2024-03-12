@@ -1,15 +1,16 @@
-import React from "react";
 import { TbLogout } from "react-icons/tb";
 import { GoDatabase } from "react-icons/go";
-import { FaEnvelope } from "react-icons/fa";
 import { MdOutlineDelete } from "react-icons/md";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IoIosCreate } from "react-icons/io";
 import { TbFileCertificate } from "react-icons/tb";
+import { MdOutlineNotificationsActive } from "react-icons/md";
+
 import { IoMail, IoMailUnread } from "react-icons/io5";
 import { useEffect } from "react";
 function Admin({ setUser, user }) {
+  const notifications = useSelector((state) => state.registrations);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const logout = () => {
@@ -65,11 +66,14 @@ function Admin({ setUser, user }) {
               </div>
             </Link>
             {/* studen data */}
-            <Link to="student-data">
+            <Link to="notification">
               <div className="functions">
                 <div className="p-2 admin_hover bg-[#2d2b42] m-4   text-white rounded cursor-pointer flex items-center">
-                  <FaEnvelope size={30} className="mr-4"/>
-                  Inbox
+                  <MdOutlineNotificationsActive size={30} className="mr-4'" />
+                  Notifications &nbsp;
+                  <span className="text-blue-600">
+                    ({notifications?.length})
+                  </span>
                 </div>
               </div>
             </Link>
@@ -77,7 +81,7 @@ function Admin({ setUser, user }) {
             <Link to="create-certificate">
               <div className="functions">
                 <div className="p-2 admin_hover bg-[#2d2b42] m-4   text-white rounded cursor-pointer flex items-center">
-                  <IoIosCreate size={30} className="mr-4"/>
+                  <IoIosCreate size={30} className="mr-4" />
                   Create Certificate
                 </div>
               </div>
@@ -95,7 +99,7 @@ function Admin({ setUser, user }) {
               <Link to="contact-list">
                 <div className="functions ">
                   <div className="p-2 admin_hover bg-[#2d2b42] m-4 text-white rounded cursor-pointer flex items-center">
-                    <IoMailUnread size={30} className="mr-4"/>
+                    <IoMailUnread size={30} className="mr-4" />
                     Contacts
                   </div>
                 </div>
@@ -106,7 +110,7 @@ function Admin({ setUser, user }) {
             <Link to="send-request-noah">
               <div className="functions ">
                 <div className="p-2 admin_hover bg-[#2d2b42] m-4 text-white rounded cursor-pointer flex items-center">
-                  <IoMail size={30} className="mr-4"/>
+                  <IoMail size={30} className="mr-4" />
                   Notify Noah Dujé
                 </div>
               </div>

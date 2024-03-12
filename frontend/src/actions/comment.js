@@ -16,8 +16,8 @@ export const fetchComments = () => async (dispatch) => {
   }
 };
 // createComments
-export const createComment = (comment) => async (dispatch) => {
-  const { data } = await api.createComment(comment);
+export const createComment = (notification) => async (dispatch) => {
+  const { data } = await api.createComment(notification);
   try {
     dispatch({ type: CREATE_COMMENT, payload: data });
   } catch (error) {

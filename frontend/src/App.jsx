@@ -23,10 +23,15 @@ import { getNews } from "./actions/news";
 import SendEmail from "./componets/SendEmail";
 import NotifyNoah from "./componets/NotifyNoah";
 import StudentData from "./componets/StudentData";
+import NotificationText from "./componets/NotificationText";
+import { getRegistrations } from "./actions/registration";
 function App() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  useEffect(() => {
+    dispatch(getRegistrations());
+  }, [dispatch]);
   useEffect(() => {
     dispatch(getContacts());
   }, [dispatch]);
@@ -89,6 +94,7 @@ function App() {
                 element={<DeleteCertificate />}
               />
 
+              <Route path="notification" element={<NotificationText />} />
               <Route path="student-data" element={<StudentData />} />
               <Route path="send-request-noah" element={<NotifyNoah />} />
               <Route path="certificates" element={<Certificates />} />

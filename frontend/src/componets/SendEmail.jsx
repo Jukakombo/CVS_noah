@@ -1,6 +1,9 @@
 import "react-toastify/dist/ReactToastify.css";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { useDispatch } from "react-redux";
+import { createRegistration } from "../actions/registration";
+
 const initialState = {
   user_email: "",
   user_name: "",
@@ -10,12 +13,13 @@ const initialState = {
 const SendEmail = () => {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState(initialState);
+  const [registrationData, setRegistrationData] = useState(initialState);
   const { user_email, user_name, message } = formData;
+  const dispatch = useDispatch();
   const form = useRef();
-
   const sendEmail = (e) => {
     e.preventDefault();
-
+    dispatch(createRegistration(registrationData));
     emailjs
       .sendForm("service_xk2389z", "template_juk05w8", form.current, {
         publicKey: "aAoKP2sDiMAbPQQeb",
@@ -38,9 +42,16 @@ const SendEmail = () => {
   };
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setRegistrationData({ ...formData, [e.target.name]: e.target.value });
   };
   const clear = () => {
     setFormData({
+      user_name: "",
+      user_email: "",
+      message: "",
+    });
+
+    setRegistrationData({
       user_name: "",
       user_email: "",
       message: "",

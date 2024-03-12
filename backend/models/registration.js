@@ -1,16 +1,9 @@
 import mongoose from "mongoose";
 const registrationSchema = mongoose.Schema(
   {
-    firstName: String,
-    lastName: String,
-    dateOfBirth: String,
-    contact: String,
-    gradeObtain: String,
-    sex: String,
-    courseCompleted: String,
-    startedYear: String,
-    completeYear: String,
-    profilePhoto: String,
+    user_email: String,
+    user_name: String,
+    message: String,
   },
   { timestamps: true }
 );

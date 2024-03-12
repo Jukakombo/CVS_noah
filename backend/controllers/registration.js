@@ -12,8 +12,9 @@ export const fetchRegistrations = async (req, res) => {
 };
 
 // function create Registrations
+
 export const createRegistration = async (req, res) => {
-  const { formData, paymentResult } = req.body;
+  const formData = req.body;
 
   const newRegistration = new Registrations(formData);
   try {
