@@ -1,14 +1,13 @@
 import React from "react";
 import { TbLogout } from "react-icons/tb";
-import { MdContactMail } from "react-icons/md";
+import { GoDatabase } from "react-icons/go";
+import { FaEnvelope } from "react-icons/fa";
 import { MdOutlineDelete } from "react-icons/md";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { IoIosCreate } from "react-icons/io";
 import { TbFileCertificate } from "react-icons/tb";
-import { IoMail } from "react-icons/io5";
-import { IoMailUnread } from "react-icons/io5";
-
+import { IoMail, IoMailUnread } from "react-icons/io5";
 import { useEffect } from "react";
 function Admin({ setUser, user }) {
   const navigate = useNavigate();
@@ -44,25 +43,42 @@ function Admin({ setUser, user }) {
           >
             <button className=" text-white rounded">Logout</button>
             &nbsp;
-            <TbLogout className="cursor-pointer" size={30} />
+            <TbLogout className="cursor-pointer flex items-center" size={30} />
           </div>
         </div>
         <div className="flex  justify-between   w-11/12 m-auto py-8 ">
           <div className="sidebar admin_bg_sidbar border-2 border-white flex-[30%] flex-col justify-between p-4">
             {/* certificates */}
             <Link to="certificates">
-              <div className="p-2 admin_hover bg-[#2d2b42] m-4 text-white rounded cursor-pointer">
+              <div className="p-2 admin_hover bg-[#2d2b42] m-4 text-white rounded cursor-pointer flex items-center">
+                <TbFileCertificate className="text-white mr-4" size={30} />
                 Students Certificates
-                <TbFileCertificate className="text-white" size={30} />
+              </div>
+            </Link>
+            {/* studen data */}
+            <Link to="student-data">
+              <div className="functions">
+                <div className="p-2 admin_hover bg-[#2d2b42] m-4   text-white rounded cursor-pointer flex items-center">
+                  <GoDatabase size={30} className="mr-4" />
+                  Students Data
+                </div>
+              </div>
+            </Link>
+            {/* studen data */}
+            <Link to="student-data">
+              <div className="functions">
+                <div className="p-2 admin_hover bg-[#2d2b42] m-4   text-white rounded cursor-pointer flex items-center">
+                  <FaEnvelope size={30} className="mr-4"/>
+                  Inbox
+                </div>
               </div>
             </Link>
             {/* create certificate */}
-
             <Link to="create-certificate">
               <div className="functions">
-                <div className="p-2 admin_hover bg-[#2d2b42] m-4   text-white rounded cursor-pointer">
+                <div className="p-2 admin_hover bg-[#2d2b42] m-4   text-white rounded cursor-pointer flex items-center">
+                  <IoIosCreate size={30} className="mr-4"/>
                   Create Certificate
-                  <IoIosCreate size={30} />
                 </div>
               </div>
             </Link>
@@ -70,17 +86,17 @@ function Admin({ setUser, user }) {
             {/* delete certificate */}
             <Link to="delete-certificate">
               <div className="functions">
-                <div className="p-2 bg-red-700  m-4 text-white rounded cursor-pointer admin_hover">
+                <div className="p-2 bg-red-700  m-4 text-white rounded cursor-pointer flex items-center admin_hover">
+                  <MdOutlineDelete size={30} className="mr-4" />
                   Delete Certificate
-                  <MdOutlineDelete size={30} />
                 </div>
               </div>
               {/* inbox */}
               <Link to="contact-list">
                 <div className="functions ">
-                  <div className="p-2 admin_hover bg-[#2d2b42] m-4 text-white rounded cursor-pointer">
+                  <div className="p-2 admin_hover bg-[#2d2b42] m-4 text-white rounded cursor-pointer flex items-center">
+                    <IoMailUnread size={30} className="mr-4"/>
                     Contacts
-                    <IoMailUnread size={30} />
                   </div>
                 </div>
               </Link>
@@ -89,15 +105,15 @@ function Admin({ setUser, user }) {
 
             <Link to="send-request-noah">
               <div className="functions ">
-                <div className="p-2 admin_hover bg-[#2d2b42] m-4 text-white rounded cursor-pointer">
+                <div className="p-2 admin_hover bg-[#2d2b42] m-4 text-white rounded cursor-pointer flex items-center">
+                  <IoMail size={30} className="mr-4"/>
                   Notify Noah Dujé
-                  <IoMail size={30} />
                 </div>
               </div>
             </Link>
             {/*logout  */}
             <div
-              className="text-white functions cursor-pointer  items-center rounded-md admin_btn p-4 mx-4 hover:bg-blue-600"
+              className="text-white functions cursor-pointer flex items-center  items-center rounded-md admin_btn p-4 mx-4 hover:bg-blue-600"
               onClick={() => dispatch(logout)}
             >
               <button className="rounded">Logout</button>

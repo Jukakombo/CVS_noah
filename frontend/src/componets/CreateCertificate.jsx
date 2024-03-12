@@ -23,7 +23,10 @@ function CreateCertificate() {
     startedYear: "",
     completeYear: "",
     profilePhoto: "",
-    customId:""
+    customId: "",
+    email: "",
+    parentName: "",
+    currentAddress: "",
   });
 
   const updateMyCertificate = useSelector((state) =>
@@ -36,7 +39,7 @@ function CreateCertificate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
- 
+
     if (currentId) {
       dispatch(updateContact(currentId, formData));
       clear();
@@ -58,7 +61,10 @@ function CreateCertificate() {
       startedYear: "",
       completeYear: "",
       profilePhoto: "",
-      customId:""
+      customId: "",
+      email: "",
+      parentName: "",
+      currentAddress: "",
     });
     setCurrentId(0);
   };
@@ -69,7 +75,7 @@ function CreateCertificate() {
           Create Student Certificate
         </h1>
         <div className="">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="text-gray-600">
             <div className="grid sm:grid-cols-1 sm:grid-cols-2">
               <div className="flex flex-col my-2 mx-2">
                 {" "}
@@ -150,6 +156,27 @@ function CreateCertificate() {
                     setFormData({
                       ...formData,
                       contact: e.target.value,
+                    })
+                  }
+                  required
+                />
+              </div>
+              <div className="flex flex-col my-2 mx-2">
+                {" "}
+                <label htmlFor="contact" className="text-gray-500 text-xl">
+                  Email
+                </label>
+                <input
+                  className="outline-none p-2 bg-gray-200 rounded"
+                  id="contact"
+                  type="email"
+                  placeholder="Student Email "
+                  name="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      email: e.target.value,
                     })
                   }
                   required
@@ -287,7 +314,56 @@ function CreateCertificate() {
                   }
                   required
                 />
-              </div>{" "}
+              </div>
+              <div className="flex flex-col my-2 mx-2">
+                {" "}
+                <label
+                  htmlFor="completedYear"
+                  className="text-gray-500 text-xl"
+                >
+                  Current Address
+                </label>
+                <input
+                  className="outline-none p-2 bg-gray-200 rounded"
+                  id="completedYear"
+                  type="text"
+                  placeholder="Current Address "
+                  name="currentAddress"
+                  value={formData.currentAddress}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      currentAddress: e.target.value,
+                    })
+                  }
+                  required
+                />
+              </div>
+              <div className="flex flex-col my-2 mx-2">
+                {" "}
+                <label
+                  htmlFor="completedYear"
+                  className="text-gray-500 text-xl"
+                >
+                  Parent's Name
+                </label>
+                <input
+                  className="outline-none p-2 bg-gray-200 rounded"
+                  id="completedYear"
+                  type="text"
+                  placeholder="Parent's Name "
+                  name="parentName"
+                  value={formData.parentName}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      parentName: e.target.value,
+                    })
+                  }
+                  required
+                />
+              </div>
+              {/* address */}
               <div className="flex flex-col my-2 mx-2">
                 {" "}
                 <label htmlFor="photo" className="text-gray-500 text-xl">
@@ -306,21 +382,26 @@ function CreateCertificate() {
                   }
                 />
               </div>
-            </div>
-            <div className="grid md:grid-cols-2 items-center gap-4">
-              <div className="">
-                <input type="text" value={formData.customId}  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      customId: e.target.value,
-                    })
-                  } 
-                  className="w-full p-2 rounded-md outline-none bg-gray-200 text-gray-500"
-                  placeholder="Custom Id Number" />
+              {/* add input */}
+              <div className="grid md:grid-cols-2 items-center gap-4">
+                <div className="">
+                  <input
+                    type="text"
+                    value={formData.customId}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        customId: e.target.value,
+                      })
+                    }
+                    className="w-full p-2 rounded-md outline-none bg-gray-200 text-gray-500"
+                    placeholder="Custom Id Number"
+                  />
+                </div>
+                <button className="admin_btn p-2 rounded-md text-white font-bold my-8   text-center w-full m-auto ">
+                  {currentId ? "Update Certificate" : " Create Certificate"}
+                </button>
               </div>
-            <button className="admin_btn p-2 rounded-md text-white font-bold my-8   text-center w-full m-auto ">
-              {currentId ? "Update Certificate" : " Create Certificate"}
-            </button>
             </div>
           </form>
           <UpdateCertificate

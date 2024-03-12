@@ -9,7 +9,9 @@ body {
   padding: 0;
   margin: 0;
 }
-
+input{
+color: #403e57;
+}
 .homepage__font {
   font-family: "Special Elite", cursive;
   font-size: 45px;

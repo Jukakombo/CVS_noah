@@ -36,6 +36,10 @@ export const updateContact = async (req, res) => {
     startedYear,
     completeYear,
     profilePhoto,
+    customId,
+    email,
+    parentName,
+    currentAddress,
   } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id))
@@ -52,6 +56,10 @@ export const updateContact = async (req, res) => {
     startedYear,
     completeYear,
     profilePhoto,
+    customId,
+    email,
+    parentName,
+    currentAddress,
     _id: id,
   };
   await Contacts.findByIdAndUpdate(id, updatedContact, { new: true });

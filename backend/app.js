@@ -32,9 +32,7 @@ app.use("/ngodatas", ngoRouter);
 
 // Default route
 app.get("/", (req, res) => {
-  res.send(
-    "Hello, welcome to my backend api"
-  );
+  res.send("Hello, welcome to my backend api");
 });
 
 // Connect to MongoDB and start the server

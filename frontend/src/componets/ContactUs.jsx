@@ -53,7 +53,7 @@ function ContactUs() {
         <p className="text-center lg:text-lg">
           Please Fill in the form with the correct information
         </p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="">
           <div className="grid sm:grid-cols-1 md:grid-cols-2 md:w-4/5 m-auto py-8 gap-8">
             <div className="flex  flex-col">
               <label htmlFor="userName" className="text-lg py-">
@@ -136,10 +136,11 @@ function ContactUs() {
               </label>
               <textarea
                 id="message"
-                className="bg-gray-100 p-2 outline-none rounded"
+                className="bg-gray-100 p-2  text-gray-600 outline-none rounded"
                 name="message"
                 value={message}
                 onChange={handleChange}
+                placeholder="Type Message ..."
                 cols="30"
                 rows="10"
               ></textarea>

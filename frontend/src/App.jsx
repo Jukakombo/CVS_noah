@@ -22,6 +22,7 @@ import ContactLists from "./componets/ContactLists";
 import { getNews } from "./actions/news";
 import SendEmail from "./componets/SendEmail";
 import NotifyNoah from "./componets/NotifyNoah";
+import StudentData from "./componets/StudentData";
 function App() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -88,6 +89,7 @@ function App() {
                 element={<DeleteCertificate />}
               />
 
+              <Route path="student-data" element={<StudentData />} />
               <Route path="send-request-noah" element={<NotifyNoah />} />
               <Route path="certificates" element={<Certificates />} />
               <Route path="contact-list" element={<ContactLists />} />
